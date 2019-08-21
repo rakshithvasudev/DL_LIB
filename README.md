@@ -1,4 +1,4 @@
-# DL_LIB is a simple Deep Learning library from scratch. 
+# DLLIBNET is a simple Deep Learning library from scratch. 
 ![Image of Brain](images/neural_net_security.png)
 
 Image Credit: https://techcrunch.com/2016/04/14/from-recording-to-reacting-neural-networks-are-changing-notions-of-surveillance/
