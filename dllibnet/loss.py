@@ -30,7 +30,10 @@ class Loss:
         Mean squared error loss, mean of the squared error.
         """
 
-        def Loss(self, predicted: Tensor, actual: Tensor) -> float:
+        def __init__(self):
+            super().__init__()
+
+        def loss(self, predicted: Tensor, actual: Tensor) -> float:
             assert predicted.shape == actual.shape
             return np.sum(np.square(tensor_diff(predicted - actual))) / predicted.shape[0]
 
