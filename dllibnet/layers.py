@@ -78,10 +78,35 @@ F = Callable[[Tensor], Tensor]
 
 class Activation(Layer):
     """
-    Applies non linearity elementwise
+    Applies non linearity elementwise.
     """
 
     def __init__(self, f: F, f_prime: F) -> None:
         super().__init__()
         self.f = f
         self.f_prime = f_prime
+
+    def tanh(self, x: Tensor) -> Tensor:
+        return np.tanh(x)
+
+    def tanh_prime(self, x: Tensor) -> Tensor:
+        y = self.tanh(x)
+        return 1 - np.square(y)
+
+    def forward(self, inputs: Tensor) -> Tensor:
+        self.inputs = inputs
+        return self.f(inputs)
+
+    def backward(self, grad: Tensor) -> Tensor:
+        """
+        if y = f(x) & x = g(z)
+        then dy/dz = f'(x) * g'(z)
+
+        :param grad:
+        :return:
+        """
+        return self.f_prime(self.inputs) * grad
+
+class Tanh(Activation):
+    def __init__(self):
+        super().__init__(self.tanh, self.tanh_prime)
