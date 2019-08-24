@@ -107,6 +107,7 @@ class Activation(Layer):
         """
         return self.f_prime(self.inputs) * grad
 
+
 class Tanh(Activation):
     def __init__(self):
         super().__init__(self.tanh, self.tanh_prime)
