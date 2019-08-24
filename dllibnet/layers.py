@@ -25,7 +25,7 @@ class Layer:
     def backward(self, grad: Tensor) -> Tensor:
         """
         Backprop gradients.
-        :param grad:
+        :param grad: partial differential values wrt errors and biases
         :return:
         """
         raise NotImplementedError
@@ -46,11 +46,11 @@ class Linear(Layer):
     def forward(self, inputs: Tensor) -> Tensor:
         """
         y = wx + b
-        :param inputs:
-        :return:
+        :param inputs: Input to the model .
+        :return: SOP of the weighted input and the bias. y.
         """
         self.inputs = inputs
-        return inputs @ self.params["w"] + self.params["b"]
+        return self.inputs @ self.params["w"] + self.params["b"]
 
     def backward(self, grad: Tensor) -> Tensor:
         """
@@ -65,7 +65,7 @@ class Linear(Layer):
         then dy/db = a.T @ f'(x)
         then dy/dc = f'(x) @ b.T
 
-        :param grad:
+        :param grad: Everything about back prop is contained here. Does the backprop operation
         :return:
         """
         self.grads["b"] = np.sum(grad, axis=0)
