@@ -25,17 +25,18 @@ class Loss:
         """
         raise NotImplementedError
 
-    class MSE(Loss):
-        """
+
+class MSE(Loss):
+    """
         Mean squared error loss, mean of the squared error.
         """
 
-        def __init__(self):
-            super().__init__()
+    def __init__(self):
+        super().__init__()
 
-        def loss(self, predicted: Tensor, actual: Tensor) -> float:
-            assert predicted.shape == actual.shape
-            return np.sum(np.square(tensor_diff(predicted - actual))) / predicted.shape[0]
+    def loss(self, predicted: Tensor, actual: Tensor) -> float:
+        assert predicted.shape == actual.shape
+        return np.sum(np.square(tensor_diff(predicted - actual))) / predicted.shape[0]
 
-        def grad(self, predicted: Tensor, actual: Tensor) -> Tensor:
-            return 2 * tensor_diff(predicted, actual)
+    def grad(self, predicted: Tensor, actual: Tensor) -> Tensor:
+        return 2 * tensor_diff(predicted, actual)
