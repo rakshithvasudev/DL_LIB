@@ -36,7 +36,7 @@ class MSE(Loss):
 
     def loss(self, predicted: Tensor, actual: Tensor) -> float:
         assert predicted.shape == actual.shape
-        return np.sum(np.square(tensor_diff(predicted - actual))) / predicted.shape[0]
+        return np.sum(np.square(tensor_diff(predicted , actual))) / predicted.shape[0]
 
     def grad(self, predicted: Tensor, actual: Tensor) -> Tensor:
         return 2 * tensor_diff(predicted, actual)

@@ -11,4 +11,4 @@ def tensor_diff(tensor1: Tensor, tensor2: Tensor) -> Tensor:
     :return: Subtracts 2 from 1
     """
 
-    return np.diff(tensor1, tensor2)
+    return tensor1 - tensor2
