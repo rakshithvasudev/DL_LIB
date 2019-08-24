@@ -7,7 +7,7 @@ from dllibnet.basic_utils.utils import tensor_diff
 
 
 class Loss:
-    def Loss(self, predicted: Tensor, actual: Tensor) -> float:
+    def loss(self, predicted: Tensor, actual: Tensor) -> float:
         """
         Base Loss function
         :param predicted: Model's predicted tensor
