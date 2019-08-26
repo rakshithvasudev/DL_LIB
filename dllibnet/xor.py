@@ -25,9 +25,9 @@ neural_nn = NeuralNet(
         Linear(input_size=2, output_size=2),
         Tanh(),
         Linear(input_size=2, output_size=2)
-     ])
+    ])
 
-train(neural_nn,inputs, targets)
+train(neural_nn, inputs, targets)
 
 for x, y in zip(inputs, targets):
     predicted = neural_nn.forward(x)
